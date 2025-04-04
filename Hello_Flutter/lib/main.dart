@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/Container.dart';
+import 'package:helloworld/Buttons.dart';
+import 'package:helloworld/ColumnsandRows.dart';
+import 'package:helloworld/Inkwell.dart';
+import 'package:helloworld/listView.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Hello Flutter'),
     );
   }
 }
@@ -30,20 +34,70 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-          child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ContainerPage()),
-          );
-        },
-        child: Text('See container widget'),
-      )),
-    );
+        appBar: AppBar(
+          // The title text which will be shown on the action bar
+          backgroundColor: Colors.black,
+          title: Text(title,
+              style: TextStyle(color: Colors.white),
+              textAlign: TextAlign.center),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ContainerPage()),
+                    );
+                  },
+                  child: Text('See container widget'),
+                ),
+                SizedBox(height: 10),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ButtonWidget()));
+                    },
+                    child: Text(
+                      "Bottons",
+                    )),
+                SizedBox(height: 10),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoumnsandRows()));
+                    },
+                    child: Text(
+                      "Columns and Rows",
+                    )),
+                SizedBox(height: 10),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Inkwell()));
+                    },
+                    child: Text(
+                      "InkWell",
+                    )),
+                SizedBox(height: 10),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ListViewWidget()));
+                    },
+                    child: Text(
+                      "ListView Widget",
+                    ))
+              ]),
+        ));
   }
 }
